@@ -1,0 +1,27 @@
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+--bg:#fff7fb;--card:#fff;--text:#2a1530;--muted:#6f5a78;--accent:#d6247f;--accent-t:#fff;--border:#ecd3e2;--err:#b3261e}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#1a0f1f;--card:#26162d;--text:#f6e9fa;--muted:#b9a2c4;--accent:#ff5fae;--accent-t:#2a0a1a;--border:#43294d;--err:#ff8a80}}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#1a0f1f;--card:#26162d;--text:#f6e9fa;--muted:#b9a2c4;--accent:#ff5fae;--accent-t:#2a0a1a;--border:#43294d;--err:#ff8a80}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5}
+.hero{background:linear-gradient(120deg,#ff3d8b,#ff9d2e 35%,#7a5cff 70%,#22c3a6);color:#fff;text-align:center;padding:40px 20px 56px}
+.hero h1{margin:8px 0 6px;font-size:clamp(1.7rem,6vw,2.6rem);text-shadow:0 2px 8px rgba(0,0,0,.25)}
+.hero p{margin:0;text-shadow:0 1px 4px rgba(0,0,0,.25)}
+main{max-width:520px;margin:-32px auto 40px;padding:0 16px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:22px;box-shadow:0 6px 24px rgba(0,0,0,.1);margin-bottom:16px}
+h2{margin:0 0 14px;font-size:1.2rem}
+label{display:block;font-weight:600;font-size:.92rem;margin:14px 0 6px}
+input,select{width:100%;padding:12px;border:1px solid var(--border);border-radius:10px;font:inherit;background:var(--bg);color:var(--text)}
+input:focus,select:focus{outline:2px solid var(--accent);border-color:transparent}
+button{margin-top:22px;width:100%;padding:14px;border:0;border-radius:10px;background:var(--accent);color:var(--accent-t);font:inherit;font-weight:700;font-size:1.05rem;cursor:pointer}
+button:disabled{opacity:.6}
+.msg{margin-top:12px;color:var(--err);font-size:.92rem;min-height:1.2em}
+.ok{text-align:center;padding:10px 0}
+.ok .big{font-size:3rem}
+.hidden{display:none}
+.total{font-size:2.6rem;font-weight:800;color:var(--accent);line-height:1}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:14px}
+.grid h3{margin:0 0 6px;font-size:.9rem;color:var(--muted)}
+.grid div div{display:flex;justify-content:space-between;font-size:.95rem;padding:3px 0;border-bottom:1px solid var(--border)}
+footer{text-align:center;color:var(--muted);font-size:.85rem;padding-bottom:24px}

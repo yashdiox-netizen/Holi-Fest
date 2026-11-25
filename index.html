@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Holi Festival – Attendance Registration</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="hero">
+  <div style="font-size:2.4rem">🎨</div>
+  <h1>Holi Festival</h1>
+  <p>Let us know you're coming! Register your attendance below.</p>
+</header>
+
+<main>
+  <div class="card">
+    <div id="formView">
+      <h2>Student Registration</h2>
+      <label for="name">Name *</label>
+      <input id="name" autocomplete="name" placeholder="Your full name">
+      <label for="sif">SIF number *</label>
+      <input id="sif" placeholder="Your SIF number">
+      <label for="intake">Intake *</label>
+      <select id="intake">
+        <option value="">Select intake</option>
+        <option>Intake 01</option><option>Intake 02</option><option>Intake 03</option><option>Intake 04</option><option>Intake 05</option>
+      </select>
+      <label for="path">Which pathway? *</label>
+      <input id="path" placeholder="Type your pathway">
+      <button id="submit" type="button">I'll Attend 🎉</button>
+      <div id="err" class="msg"></div>
+    </div>
+    <div id="doneView" class="ok hidden">
+      <div class="big">🌈</div>
+      <h2>Thank you!</h2>
+      <p id="doneText"></p>
+      <p style="color:var(--muted);font-size:.9rem">See you at the Holi festival!</p>
+    </div>
+  </div>
+</main>
+<footer>Happy Holi! 🎉</footer>
+
+<script>
+// 1) Paste your Apps Script Web App URL here:
+var SCRIPT_URL="https://script.google.com/macros/s/AKfycby8PDEZ6jVMkP44HPkOYe7ZFJUFpS0fVmzCVpobmBH9Z52lIrf2k3L8Jxhj4U1JcRFexw/exec";
+(function(){
+  var $=function(id){return document.getElementById(id)};
+  $("submit").addEventListener("click",async function(){
+    var name=$("name").value.trim(),sif=$("sif").value.trim(),intake=$("intake").value,path=$("path").value.trim();
+    var err=$("err");err.textContent="";
+    if(!name||!sif||!intake||!path){err.textContent="Please fill in all fields.";return}
+    var btn=$("submit");btn.disabled=true;btn.textContent="Saving…";
+    try{
+      await fetch(SCRIPT_URL,{method:"POST",mode:"no-cors",
+        body:new URLSearchParams({name:name,sif:sif,intake:intake,pathway:path})});
+      $("formView").classList.add("hidden");
+      $("doneView").classList.remove("hidden");
+      $("doneText").textContent="Thanks, "+name+"! Your attendance has been recorded.";
+    }catch(e){
+      err.textContent="Could not save. Please try again.";
+      btn.disabled=false;btn.textContent="I'll Attend 🎉";
+    }
+  });
+})();
+</script>
+</body>
+</html>
